@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+checkpoints/
+logs/
+*.zip
+.DS_Store
+repo/out*/
+repo/__pycache__/
+out*/

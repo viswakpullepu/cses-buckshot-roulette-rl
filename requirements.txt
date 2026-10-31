@@ -1,0 +1,17 @@
+--extra-index-url https://download.pytorch.org/whl/cu124
+torch>=2.4.0
+torchvision
+stable-baselines3[extra]>=2.3.0
+gymnasium>=0.29.1
+gymnasium[classic-control]
+gymnasium[other]
+shimmy>=1.3.0
+pygame>=2.5.0
+opencv-python
+tensorboard
+numpy
+matplotlib
+scipy
+tqdm
+pandas
+Rich
