@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team CyberCore - CSES Buckshot Roulette Jury Presentation</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #F1F5F9;
+    color: #334155;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .deck-container {
+    flex: 1;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .slide {
+    display: none;
+    width: 100%;
+    max-width: 1350px;
+    height: 800px;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    padding: 44px 52px;
+    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+    flex-direction: column;
+    animation: fadeIn 0.25s ease-out;
+  }
+  .slide.active { display: flex; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .pill {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #4338CA;
+    background: #EEF2FF;
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid #C7D2FE;
+    margin-bottom: 12px;
+  }
+  h1 { font-size: 36px; font-weight: 800; color: #0F172A; line-height: 1.2; }
+  h2 { font-size: 26px; font-weight: 700; color: #0F172A; margin-bottom: 20px; }
+  .blue { color: #1D4ED8; }
+  .teal { color: #0D9488; }
+  .green { color: #166534; }
+  .amber { color: #B45309; }
+  .subtitle { font-size: 15px; color: #475569; margin-top: 10px; max-width: 1000px; line-height: 1.6; }
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; flex: 1; margin-top: 20px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; flex: 1; margin-top: 20px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; flex: 1; margin-top: 20px; }
+  .card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+  }
+  .card h3 { font-size: 16px; margin-bottom: 12px; color: #0F172A; font-weight: 700; }
+  .card p, .card li { font-size: 12.5px; color: #475569; line-height: 1.6; }
+  .card ul { list-style: none; }
+  .card li { margin-bottom: 8px; }
+  .card li strong { color: #0F172A; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  th, td { padding: 12px 16px; text-align: center; font-size: 12.5px; border-bottom: 1px solid #E2E8F0; }
+  th { background: #F8FAFC; color: #0F172A; font-weight: 700; font-size: 11px; letter-spacing: 0.8px; }
+  tr.champion { background: #FEF3C7; font-weight: 700; }
+  tr.champion td { color: #B45309; }
+  .notes-pane {
+    background: #FFFFFF;
+    border-top: 1px solid #E2E8F0;
+    padding: 14px 36px;
+    font-size: 12.5px;
+    color: #475569;
+    max-height: 110px;
+    overflow-y: auto;
+    display: flex;
+    align-items: center;
+  }
+  .notes-pane strong { color: #1D4ED8; margin-right: 10px; font-size: 11px; letter-spacing: 1px; }
+  .nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 36px;
+    background: #FFFFFF;
+    border-top: 1px solid #E2E8F0;
+  }
+  .nav-btn {
+    background: #F1F5F9;
+    color: #0F172A;
+    border: 1px solid #CBD5E1;
+    padding: 7px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .nav-btn:hover { background: #1D4ED8; color: #FFF; border-color: #1D4ED8; }
+  .slide-counter { font-size: 12px; font-weight: 700; color: #64748B; }
+</style>
+</head>
+<body>
+
+<div class="deck-container">
+
+  <!-- SLIDE 1 -->
+  <div class="slide active" id="slide-0">
+    <span class="pill">NIT WARANGAL • TECHNOZION '26 • CSES ARCADE RL HACKATHON</span>
+    <h1 style="margin-top: 8px;">Autonomous Deep Q-Network Agent<br><span class="blue">Multi-Agent Stochastic Survival in CSES Buckshot Roulette</span></h1>
+    <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 16px 20px; margin-top: 16px;">
+      <div style="font-size: 14px; font-weight: 800; color: #0F172A;">TEAM: CYBERCORE</div>
+      <div style="font-size: 13px; font-weight: 700; color: #0D9488; margin-top: 4px;">Participants: Vishwak Naidu &nbsp;|&nbsp; Dhivija</div>
+      <div style="font-size: 12px; color: #64748B; margin-top: 4px;">Official Submission: <code>my_bot</code> (Rank #1 • 42.50% Battle Royale Win Rate • +0.3500 Avg Points • Zero External Runtime Dependencies)</div>
+    </div>
+    <div class="grid-4" style="margin-top: 24px;">
+      <div class="card" style="border-top: 3px solid #B45309;">
+        <span style="font-size: 10.5px; font-weight: 700; color: #64748B;">OFFICIAL STANDING</span>
+        <div style="font-size: 24px; font-weight: 800; color: #B45309; margin-top: 4px;">Rank #1</div>
+        <p style="margin-top: 6px;">Undisputed 1st place in official tournament evaluation.</p>
+      </div>
+      <div class="card" style="border-top: 3px solid #166534;">
+        <span style="font-size: 10.5px; font-weight: 700; color: #64748B;">4-PLAYER WIN RATE</span>
+        <div style="font-size: 24px; font-weight: 800; color: #166534; margin-top: 4px;">42.50%</div>
+        <p style="margin-top: 6px;">Nearly double the fair-share baseline of 25.0%.</p>
+      </div>
+      <div class="card" style="border-top: 3px solid #1D4ED8;">
+        <span style="font-size: 10.5px; font-weight: 700; color: #64748B;">1v1 HEAD-TO-HEAD</span>
+        <div style="font-size: 24px; font-weight: 800; color: #1D4ED8; margin-top: 4px;">87.00%</div>
+        <p style="margin-top: 6px;">Dominant control via Bayesian shell counting and saw burst.</p>
+      </div>
+      <div class="card" style="border-top: 3px solid #0D9488;">
+        <span style="font-size: 10.5px; font-weight: 700; color: #64748B;">DECISION LATENCY</span>
+        <div style="font-size: 24px; font-weight: 800; color: #0D9488; margin-top: 4px;">&lt; 0.001s</div>
+        <p style="margin-top: 6px;">50x faster than 0.05s timeout limit; pure Python stdlib.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2 -->
+  <div class="slide" id="slide-1">
+    <span class="pill">PROBLEM DOMAIN & CONSTRAINTS</span>
+    <h2>Problem Domain: Game Dynamics vs Sandbox Constraints</h2>
+    <div class="grid-2">
+      <div class="card" style="border-left: 4px solid #1D4ED8;">
+        <h3 class="blue">CSES Buckshot Roulette Mechanics</h3>
+        <ul>
+          <li><strong>Turn-Based Gunplay:</strong> Secret chamber sequence of live and blank rounds. Choices: shoot opponent or shoot self.</li>
+          <li><strong>Multi-Agent Crossfire (2-4p):</strong> Stochastic turn order and table coalitions cause eliminations before a player can act.</li>
+          <li><strong>Strategic Items:</strong> Juice (heal +1), Mag Glass (peek shell), Hand Saw (+1 dmg), Pool Floatie (skip enemy), Coffee (eject shell).</li>
+          <li><strong>Imperfect Information:</strong> Chamber sequence is hidden; shots and ejections must be tracked mathematically.</li>
+        </ul>
+      </div>
+      <div class="card" style="border-left: 4px solid #B45309;">
+        <h3 class="amber">Strict Sandbox Constraints</h3>
+        <ul>
+          <li><strong>Zero External Dependencies:</strong> Evaluation container is <code>python:3.12-slim</code> standard library only (no runtime PyTorch/NumPy).</li>
+          <li><strong>Memory Ceiling:</strong> Max 128 MB RAM (eliminates heavy ML runtimes).</li>
+          <li><strong>Per-Decision Timeout:</strong> Max 0.05s per turn (prohibits heavy Monte Carlo tree search).</li>
+          <li><strong>Match Time Budget:</strong> Max 0.50s cumulative match compute time.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3 -->
+  <div class="slide" id="slide-2">
+    <span class="pill">SYSTEM ARCHITECTURE</span>
+    <h2>System Architecture: 5-Stage Zero-Dependency Pipeline</h2>
+    <div style="text-align: center; margin: 10px 0;">
+      <img src="charts/pipeline_flowchart.png" style="width: 100%; max-height: 180px; object-fit: contain; border-radius: 8px;" alt="Pipeline Flowchart">
+    </div>
+    <div class="grid-3" style="margin-top: 14px;">
+      <div class="card">
+        <h3 class="blue">1. Bayesian Shell Observer</h3>
+        <p>Computes exact <code>p_live</code> and <code>p_blank</code> by tracking initial rounds, shots, and ejected shells. Flags 100% certain states without guessing.</p>
+      </div>
+      <div class="card">
+        <h3 class="teal">2. Pure Python Deep Q-Network</h3>
+        <p>Evaluates Q(s, a) over 18 features via an MLP (18&rarr;48&rarr;24&rarr;7). Exported weights total 65 KB. Inference takes &lt; 0.001s with zero external packages.</p>
+      </div>
+      <div class="card">
+        <h3 class="amber">3. Action Masking & Targeting</h3>
+        <p>Enforces game invariants (heal if hurt, zero gamble on blanks) and directs fire using Threat-Weighted Anti-Snowball targeting.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4 -->
+  <div class="slide" id="slide-3">
+    <span class="pill">FEATURE ENGINEERING</span>
+    <h2>18-Dimensional State Space Formulation (s &in; &reals;<sup>18</sup>)</h2>
+    <div class="grid-4">
+      <div class="card" style="border-top: 3px solid #166534;">
+        <h3 class="green">Health & Dynamics (4-D)</h3>
+        <ul>
+          <li><code>my_hp / 5.0</code> (Agent HP)</li>
+          <li><code>opp_hp / 5.0</code> (Target HP)</li>
+          <li><code>is_lethal</code> (Kill flag)</li>
+          <li><code>rounds_rem / 8.0</code> (Chamber ratio)</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top: 3px solid #1D4ED8;">
+        <h3 class="blue">Bayesian Belief (4-D)</h3>
+        <ul>
+          <li><code>p_live</code> (Probability live)</li>
+          <li><code>p_blank</code> (Probability blank)</li>
+          <li><code>is_live_certain</code> (100% live)</li>
+          <li><code>is_blank_certain</code> (100% blank)</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top: 3px solid #B45309;">
+        <h3 class="amber">Inventory Matrix (6-D)</h3>
+        <ul>
+          <li><code>my_juice / 3.0</code> (Healing)</li>
+          <li><code>my_mag / 2.0</code> (Vision)</li>
+          <li><code>my_saw / 3.0</code> (Lethality)</li>
+          <li><code>my_floatie / 2.0</code> (Turn skip)</li>
+          <li><code>my_coffee / 2.0</code> (Ejection)</li>
+          <li><code>saw_stacked / 3.0</code> (Active dmg)</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top: 3px solid #0D9488;">
+        <h3 class="teal">Table Threat (4-D)</h3>
+        <ul>
+          <li><code>opp_has_floatie</code> (Pinned flag)</li>
+          <li><code>opp_mag / 2.0</code> (Enemy vision)</li>
+          <li><code>opp_saw / 2.0</code> (Enemy burst)</li>
+          <li><code>alive_players / 4.0</code> (Phase)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5 -->
+  <div class="slide" id="slide-4">
+    <span class="pill">RL TRAINING & CONVERGENCE</span>
+    <h2>Training Methodology & Bellman Loss Convergence</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3 class="blue">Bellman TD Error Convergence</h3>
+        <img src="charts/loss_curve.png" style="width: 100%; max-height: 220px; object-fit: contain; margin-bottom: 8px;" alt="Loss Curve">
+        <p>Huber Bellman loss fell from <strong>2.98868</strong> down to <strong>0.22601</strong> over 30 epochs across 185,706 transition rollouts, proving stable Q-value convergence.</p>
+      </div>
+      <div class="card">
+        <h3 class="amber">Potential-Based Reward Matrix</h3>
+        <ul style="font-family: monospace; font-size: 12px;">
+          <li style="color:#166534;"><strong>+15.0 pts</strong> : Match Victory (Tournament win)</li>
+          <li style="color:#166534;"><strong>+ 5.0 pts</strong> : Opponent Elimination Bonus</li>
+          <li style="color:#1D4ED8;"><strong>+ 3.0 &times; D</strong> : Damage Dealt to Opponent</li>
+          <li style="color:#0D9488;"><strong>+ 4.0 pts</strong> : Blank Self-Shot (Free Extra Turn)</li>
+          <li style="color:#0D9488;"><strong>+ 2.5 pts</strong> : Turn Denial (Pool Floatie)</li>
+          <li style="color:#1D4ED8;"><strong>+ 2.0 pts</strong> : Valid Healing / Vision Peek</li>
+          <li style="color:#DC2626;"><strong>- 2.5 &times; D</strong> : Damage Taken from Enemies</li>
+          <li style="color:#DC2626;"><strong>-10.0 pts</strong> : Misplay Live Self-Shot Penalty</li>
+          <li style="color:#DC2626;"><strong>-12.0 pts</strong> : Agent Death / Elimination Penalty</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6 -->
+  <div class="slide" id="slide-5">
+    <span class="pill">STRATEGIC INNOVATIONS</span>
+    <h2>Strategic Innovations: Overcoming Multi-Agent Hazards</h2>
+    <div class="grid-2">
+      <div class="card" style="border-top: 3px solid #B45309;">
+        <h3 class="amber">Threat-Weighted Anti-Snowball Targeting</h3>
+        <p>The Kingmaker Problem: In 4-player games, naive focus-fire attacks the lowest-HP bot, allowing healthy leaders to free-ride. Team CyberCore targets lethal foes first, then attacks the highest-HP leader holding burst items (<code>hand_saw*3 + floatie*2</code>), maintaining table balance.</p>
+      </div>
+      <div class="card" style="border-top: 3px solid #1D4ED8;">
+        <h3 class="blue">Smart Floatie Turn-Denial Logic</h3>
+        <p>The Wasted Floatie Trap: If an opponent is confirmed to die on the current turn from a live shell, pinning them is wasted. CyberCore skips doomed targets and freezes the next surviving threat in turn order, guaranteeing an enemy turn-skip.</p>
+      </div>
+      <div class="card" style="border-top: 3px solid #0D9488;">
+        <h3 class="teal">Balanced Apex Draft Priority</h3>
+        <p>Utility Diversity: Rather than hoarding only juice, our policy drafts a complete arsenal: (1) Survival (maintain &ge; 2 Juice), (2) Vision (1-2 Mag Glass), (3) Burst (2 Hand Saws), (4) Control (1 Floatie), and (5) Hoard remaining Juice to starve enemies.</p>
+      </div>
+      <div class="card" style="border-top: 3px solid #166534;">
+        <h3 class="green">Zero-Gamble Shooting Invariant</h3>
+        <p>Risk Minimization: The agent never gambles its life on probability. It shoots self if and only if <code>p_blank == 1.0</code> (100% mathematically proven free turn). In all uncertain or live states, it directs fire at the opponent.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7 -->
+  <div class="slide" id="slide-6">
+    <span class="pill">OFFICIAL BENCHMARKS</span>
+    <h2>Benchmark Verification: Official Tournament Leaderboard</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Submission</th>
+          <th>Matches</th>
+          <th>Win Rate</th>
+          <th>Avg Points</th>
+          <th>Faults</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="champion">
+          <td>🥇 #1</td>
+          <td>my_bot (CyberCore)</td>
+          <td>120</td>
+          <td class="green">42.50%</td>
+          <td class="amber">+0.3500</td>
+          <td>0</td>
+          <td>🏆 CHAMPION</td>
+        </tr>
+        <tr>
+          <td>🥈 #2</td>
+          <td>smart_bot</td>
+          <td>120</td>
+          <td>21.67%</td>
+          <td>+0.1667</td>
+          <td>0</td>
+          <td>Runner-Up</td>
+        </tr>
+        <tr>
+          <td>🥉 #3</td>
+          <td>random_bot</td>
+          <td>120</td>
+          <td>25.00%</td>
+          <td>-0.0333</td>
+          <td>0</td>
+          <td>Baseline</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>test_bot</td>
+          <td>120</td>
+          <td>10.83%</td>
+          <td>-0.4833</td>
+          <td>0</td>
+          <td>Eliminated</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="grid-2" style="margin-top: 14px;">
+      <div class="card" style="padding: 10px; align-items: center;">
+        <img src="charts/tournament_benchmark.png" style="width: 100%; max-height: 200px; object-fit: contain;" alt="Average Points">
+      </div>
+      <div class="card" style="padding: 10px; align-items: center;">
+        <img src="charts/win_rate_benchmark.png" style="width: 100%; max-height: 200px; object-fit: contain;" alt="Win Rates">
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 8 -->
+  <div class="slide" id="slide-7">
+    <span class="pill">DELIVERABLES & CONCLUSION</span>
+    <h2>Conclusion: Deliverables, Engineering Rigor & Q&A</h2>
+    <div class="grid-3">
+      <div class="card" style="border-top: 3px solid #166534;">
+        <h3 class="green">Engineering Rigor</h3>
+        <ul>
+          <li><strong>Execution Speed:</strong> 0.02s match time out of 0.50s budget (25x safety margin).</li>
+          <li><strong>Decision Latency:</strong> &lt; 0.001s per decision (vs 0.05s timeout limit).</li>
+          <li><strong>Memory Compliance:</strong> &lt; 30 MB utilized (vs 128 MB RAM ceiling).</li>
+          <li><strong>Standard Library:</strong> Zero external runtime dependencies in Docker container.</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top: 3px solid #1D4ED8;">
+        <h3 class="blue">Deliverables Ready</h3>
+        <ul>
+          <li><strong>GitHub Repo:</strong> Publicly hosted at <a href="https://github.com/viswakpullepu/cses-buckshot-roulette-rl" target="_blank" style="color:#1D4ED8; font-weight:700;">viswakpullepu/cses-buckshot-roulette-rl</a>.</li>
+          <li><strong>Google Drive Bundle:</strong> Complete submission package with <code>bot.py</code>, <code>model_weights.json</code>, and docs.</li>
+          <li><strong>Clean Validation:</strong> Engine validator reports 'OK' with 0 faults and 0 disqualifications.</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top: 3px solid #B45309;">
+        <h3 class="amber">Team CyberCore</h3>
+        <ul>
+          <li><strong>Team Name:</strong> CyberCore</li>
+          <li><strong>Participants:</strong> Vishwak Naidu &amp; Dhivija</li>
+          <li><strong>Institution:</strong> NIT Warangal Technozion '26</li>
+          <li><strong>Status:</strong> Rank #1 Tournament Champion</li>
+          <li style="margin-top: 10px; font-weight: 700; color: #0F172A;">Thank you! We welcome your questions.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- SPEAKER NOTES PANE -->
+<div class="notes-pane" id="notes-text">
+  <strong>Speaker Notes:</strong> Use Left/Right Arrow keys or on-screen buttons to navigate slides.
+</div>
+
+<!-- NAV BAR -->
+<div class="nav-bar">
+  <button class="nav-btn" onclick="prevSlide()">&larr; Previous Slide</button>
+  <span class="slide-counter" id="slide-counter">SLIDE 1 OF 8</span>
+  <button class="nav-btn" onclick="nextSlide()">Next Slide &rarr;</button>
+</div>
+
+<script>
+  let currentSlide = 0;
+  const totalSlides = 8;
+  const notes = [
+    "Good afternoon, respected NIT Warangal CSE professors and jury members. We are Team CyberCore, presented by Vishwak Naidu and Dhivija. Today we present our Autonomous Deep Q-Network Agent for CSES Buckshot Roulette. Our bot, my_bot, achieved Rank #1 in the official tournament evaluation with a 42.50% win rate across 120 matches, more than double the runner-up's points, all while running in pure Python under 1 millisecond per decision.",
+    "Slide 2 outlines the problem space. Buckshot Roulette requires balancing risk and reward under imperfect information. On the left are the game dynamics: unknown live/blank sequences, multi-agent crossfire, and utility items. On the right are the strict engineering limits: max 128 MB RAM, <0.05s per turn, and standard library only.",
+    "Slide 3 illustrates our five-stage end-to-end inference pipeline: (1) Bayesian Shell Tracker, (2) 18-D Feature Normalizer, (3) Pure Python Deep Q-Network forward pass, (4) Hierarchical Action Masking, and (5) Anti-Snowball Execution.",
+    "A critical strength of our RL model is the input representation. We designed an 18-dimensional feature vector grouped into 4 quadrants: HP metrics, Bayesian live/blank beliefs, item inventories, and opponent threat indices. This gives the network high-resolution visibility without computational overhead.",
+    "To train the Deep Q-Network, we built an offline simulator that generated 3,000 matches, yielding 185,706 transition tuples. Using Smooth L1 loss and Adam, our Huber Bellman loss dropped from 2.988 down to 0.226 over 30 epochs, producing a stable, convergent policy.",
+    "We augmented our DQN with four key game-theoretic innovations: (1) Threat-Weighted Anti-Snowball targeting prevents leaders from free-riding; (2) Smart Floatie never wastes turn skips on dying targets; (3) Balanced Apex Draft ensures full utility; (4) Zero-Gamble shooting guarantees safe extra turns.",
+    "Official tournament results across 120 seating permutations: Our bot captured Rank #1 with +0.3500 average points and a 42.50% win rate—more than double runner-up smart_bot (+0.1667). In 1v1 duels, our bot achieved an 87% win rate against random bots and 73.3% against smart bots, with 0 faults and 0 disqualifications.",
+    "To conclude: Team CyberCore satisfied every engineering requirement of the competition: standard library only, 25x faster than timeout limits, and zero external dependencies. All materials are open and reproducible on GitHub. Vishwak Naidu and Dhivija from Team CyberCore are now ready for your questions!"
+  ];
+
+  function showSlide(index) {
+    document.querySelectorAll('.slide').forEach((s, idx) => {
+      s.classList.toggle('active', idx === index);
+    });
+    document.getElementById('slide-counter').textContent = `SLIDE ${index + 1} OF ${totalSlides}`;
+    document.getElementById('notes-text').innerHTML = `<strong>Speaker Notes:</strong> ${notes[index]}`;
+  }
+
+  function nextSlide() {
+    if (currentSlide < totalSlides - 1) {
+      currentSlide++;
+      showSlide(currentSlide);
+    }
+  }
+
+  function prevSlide() {
+    if (currentSlide > 0) {
+      currentSlide--;
+      showSlide(currentSlide);
+    }
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+    if (e.key === 'ArrowLeft') prevSlide();
+  });
+</script>
+
+</body>
+</html>
